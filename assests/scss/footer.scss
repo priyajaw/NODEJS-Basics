@@ -1,0 +1,15 @@
+#footer-con{
+    margin-top:100%;
+ display: flex;
+ justify-content: flex-start;
+ background-color: aliceblue;
+ ul{
+    li{
+        list-style-type: none;
+
+    }
+    a{
+        text-decoration: none;
+    }
+ }
+}

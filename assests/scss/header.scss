@@ -1,0 +1,36 @@
+#layout-header{
+    nav{
+        display:flex;
+        justify-content: space-between;
+    
+        height: 100px;
+        width: 100%;
+        background-color: lemonchiffon;
+        .mini-logo{
+            p{
+                margin: 5px;
+                font-size: 1.4rem;
+                font-weight: bold;
+            }
+        }
+
+        .auth-links{
+            ul{
+                margin: 5% 5px;
+                display: flex;
+
+                li{
+                    margin-right: 10px;
+                    list-style-type: none;
+                }
+            }
+        }
+
+        a{
+text-decoration: none;
+        }  
+    }
+    
+
+}
+

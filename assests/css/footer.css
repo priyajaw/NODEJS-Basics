@@ -1,0 +1,9 @@
+#footer-con {
+  margin-top: 100%;
+  display: flex;
+  justify-content: flex-start;
+  background-color: aliceblue; }
+  #footer-con ul li {
+    list-style-type: none; }
+  #footer-con ul a {
+    text-decoration: none; }
