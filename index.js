@@ -4,7 +4,7 @@ const express=require('express');
 const cookieParser=require('cookie-parser');
 
 const app=express();
-  const port=5000;
+  const port=9000;
 const db=require('./config/mongoose');
 //used for session cookie
 const session=require('express-session');
