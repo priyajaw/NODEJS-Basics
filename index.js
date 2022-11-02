@@ -14,12 +14,15 @@ const MongoStore=require('connect-mongo');
 
 const mongoose = require('mongoose');
 const sassMiddleware=require('node-sass-middleware');
+const flash=require('connect-flash');
+const customMware=require('./config/middleware');
+
  app.use(sassMiddleware({
 
 
   src:'./assests/scss',
   dest:'./assests/css',
-  debug:true,
+  debug:false,
   outputStyle:'extended',
   prefix:'/css'
  }))
@@ -67,16 +70,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenicatedUser);//middleware called sign in vala in local as views
+
+app.use(flash());
+app.use(customMware.setFlash);
 app.use('/',require('./routes'));
 
-app.get("/logout", function(req, res, next) {
-    req.logout(function(err) {
-      if (err) {
-        return next(err);
-      }
-      res.redirect("/");
-    });
-  });
 
 
   app.listen(port,function(err){

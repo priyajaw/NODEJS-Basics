@@ -1,23 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%=title%></title>
-    <link rel="stylesheet" href="/css/layout.css"></link>
-    <link rel="stylesheet" href="/css/header.css"></link>
-    <link rel="stylesheet" href="/css/footer.css"></link>
-    <%-style%>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%=title%>
+  </title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css
+  ">
+  </link>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+
+
+
+<link rel="stylesheet" href="/css/layout.css">
+
+  </link>
+  <link rel="stylesheet" href="/css/header.css">
+  </link>
+  <link rel="stylesheet" href="/css/footer.css">
+  </link>
+  <%-style%>
 </head>
+
 <body>
 
 
-<%-include('_header');%>
-<main id="layout-main">
-  <%- body %>
-</main>
+  <%-include('_header');%>
+    <!-- <% if(flash.success && flash.success.length>0){%>
 
-  <%- include('_footer');%>
+      <h5>
+        <%=flash.success%>
+      </h5>
+      <%}%> -->
+    <main id="layout-main">
+      <%- body %>
+    </main>
+
+    <%- include('_footer');%>
+    <%-script%>
+        <script>
+           <% if (flash.success && flash.success.length > 0) {%>
+                new Noty({
+                    theme: 'relax',
+                    text: "<%= flash.success %>",
+                    type: 'success',
+                    layout: 'topRight',
+                    timeout: 1500
+                    
+                }).show();    
+            <%} %>
+
+            <% if (flash.error && flash.error.length > 0) {%>
+                new Noty({
+                    theme: 'relax',
+                    text: "<%= flash.error %>",
+                    type: 'error',
+                    layout: 'topRight',
+                    timeout: 1500
+                    
+                }).show();    
+            <%} %>
+        </script>
+          
 </body>
+
 </html>
