@@ -10,8 +10,9 @@ const db=require('./config/mongoose');
 const session=require('express-session');
 const passport=require('passport');
 const passportLocal=require('./config/passport-local');
+const passportJwt=require('./config/passport-jwt');
 const MongoStore=require('connect-mongo');
-
+const passportGoogle=require('./config/passport-google-oauth')
 const mongoose = require('mongoose');
 const sassMiddleware=require('node-sass-middleware');
 const flash=require('connect-flash');
@@ -34,8 +35,8 @@ app.use(cookieParser());
 const expressLayouts=require('express-ejs-layouts');
 
 app.use(express.static('./assests'));
-
-
+//make uploads avaliable
+app.use('/uploads',express.static(__dirname+'/uploads'));
 app.use(expressLayouts);
 app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);

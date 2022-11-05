@@ -1,6 +1,7 @@
 const Post = require('../models/post')
 // const user = require('../models/user')
 const Comment = require('../models/comment')
+const postsMailer=require('../mailers/post_mailer');
 module.exports.create = async function (req, res) {
     try {
         let post =await Post.create({
@@ -8,8 +9,10 @@ module.exports.create = async function (req, res) {
             content: req.body.content,
             user: req.user._id
         });
+        post = await post.populate('user', 'name email');
+        postsMailer.newPosts(post);
         if (req.xhr){
-            post = await post.populate('user', 'name');
+   
             console.log(post);
             return res.status(200).json({
                 data: {
